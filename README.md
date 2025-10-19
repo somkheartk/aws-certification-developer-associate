@@ -1280,6 +1280,328 @@ aws cloudwatch get-metric-statistics \
 
 ---
 
+---
+
+## 💼 Sample Projects for Practice
+
+### Project 1: Serverless Todo API
+**ความยาก:** ⭐⭐☆☆☆
+
+**Features:**
+- Create, Read, Update, Delete todos
+- User authentication with Cognito
+- Per-user data isolation
+- Email notifications on task completion
+
+**Architecture:**
+```
+Cognito → API Gateway → Lambda → DynamoDB
+                            ↓
+                          SNS → Email
+```
+
+**Services Used:**
+- Amazon Cognito (User Pool)
+- API Gateway (REST API)
+- Lambda (CRUD operations)
+- DynamoDB (Data storage)
+- SNS (Notifications)
+
+**Learning Outcomes:**
+- User authentication flow
+- JWT token handling
+- DynamoDB query patterns
+- API Gateway authorizers
+
+---
+
+### Project 2: Image Processing Pipeline
+**ความยาก:** ⭐⭐⭐☆☆
+
+**Features:**
+- Upload images to S3
+- Automatic thumbnail generation
+- Image metadata extraction
+- CDN distribution
+- Search by tags
+
+**Architecture:**
+```
+Upload → S3 → Lambda (Resize) → S3 (Thumbnails)
+              ↓                   ↓
+         DynamoDB              CloudFront
+         (Metadata)
+```
+
+**Services Used:**
+- S3 (Storage, Event notifications)
+- Lambda (Image processing)
+- DynamoDB (Metadata)
+- CloudFront (CDN)
+- Step Functions (Orchestration)
+
+**Learning Outcomes:**
+- S3 event notifications
+- Binary data processing in Lambda
+- CloudFront integration
+- Step Functions workflow
+
+---
+
+### Project 3: E-commerce Order System
+**ความยาก:** ⭐⭐⭐⭐☆
+
+**Features:**
+- Product catalog
+- Shopping cart
+- Order placement
+- Payment processing (mock)
+- Inventory management
+- Order tracking
+- Email/SMS notifications
+
+**Architecture:**
+```
+API Gateway → Lambda (Orders)
+                ↓
+              SQS → Lambda (Process) → DynamoDB
+                ↓                       ↓
+            Step Functions          ElastiCache
+                ↓                       ↓
+              SNS              Lambda (Inventory)
+```
+
+**Services Used:**
+- API Gateway
+- Lambda (Multiple functions)
+- DynamoDB (Orders, Products, Inventory)
+- SQS (Order queue)
+- Step Functions (Order workflow)
+- SNS (Notifications)
+- ElastiCache (Session, Product cache)
+- CloudWatch (Monitoring)
+
+**Learning Outcomes:**
+- Microservices architecture
+- Event-driven design
+- State machine workflows
+- Caching strategies
+- Transaction handling
+
+---
+
+### Project 4: Real-time Chat Application
+**ความยาก:** ⭐⭐⭐☆☆
+
+**Features:**
+- Real-time messaging
+- Online user tracking
+- Message history
+- Typing indicators
+- Read receipts
+
+**Architecture:**
+```
+WebSocket API → Lambda → DynamoDB
+                  ↓         ↓
+              ConnectionId  Messages
+                  ↓
+              ElastiCache (Online users)
+```
+
+**Services Used:**
+- API Gateway (WebSocket API)
+- Lambda (Connection handler, Message handler)
+- DynamoDB (Messages, Connections)
+- ElastiCache (Real-time data)
+
+**Learning Outcomes:**
+- WebSocket API
+- Connection management
+- Real-time data synchronization
+- Bi-directional communication
+
+---
+
+### Project 5: Serverless Blog Platform
+**ความยาก:** ⭐⭐⭐☆☆
+
+**Features:**
+- Create/Edit/Delete posts
+- Comments
+- Tag-based search
+- User authentication
+- Admin panel
+- Analytics
+
+**Architecture:**
+```
+Route 53 → CloudFront → S3 (Static Site)
+                           ↓
+                      API Gateway → Lambda
+                                      ↓
+                                  DynamoDB
+```
+
+**Services Used:**
+- Route 53 (DNS)
+- CloudFront (CDN)
+- S3 (Static hosting)
+- API Gateway
+- Lambda (Backend)
+- DynamoDB (Posts, Comments)
+- Cognito (Authentication)
+
+**Learning Outcomes:**
+- Static site hosting
+- CDN configuration
+- Custom domain setup
+- Full-stack serverless
+
+---
+
+### Project 6: Data Analytics Dashboard
+**ความยาก:** ⭐⭐⭐⭐☆
+
+**Features:**
+- Real-time data ingestion
+- Data transformation
+- Aggregations
+- Interactive dashboard
+- Historical analysis
+
+**Architecture:**
+```
+Data Source → Kinesis Stream → Lambda → DynamoDB
+                                 ↓         ↓
+                            Firehose    Dashboard
+                                 ↓         ↓
+                               S3      API Gateway
+                                         ↓
+                                     CloudFront
+```
+
+**Services Used:**
+- Kinesis Data Streams
+- Lambda (Processing)
+- Kinesis Firehose
+- S3 (Data lake)
+- DynamoDB (Real-time data)
+- API Gateway
+- CloudFront
+
+**Learning Outcomes:**
+- Stream processing
+- Real-time analytics
+- Data lake architecture
+- Aggregation patterns
+
+---
+
+### Project 7: CI/CD Demo Application
+**ความยาก:** ⭐⭐⭐☆☆
+
+**Features:**
+- Automated testing
+- Multi-environment deployment
+- Blue/Green deployment
+- Rollback capability
+- Deployment notifications
+
+**Architecture:**
+```
+CodeCommit → CodePipeline → CodeBuild → CodeDeploy
+                                            ↓
+                                      ECS/Lambda
+                                            ↓
+                                          SNS
+```
+
+**Services Used:**
+- CodeCommit (Source control)
+- CodePipeline (Orchestration)
+- CodeBuild (Build/Test)
+- CodeDeploy (Deployment)
+- ECS or Lambda (Application)
+- SNS (Notifications)
+- CloudWatch (Monitoring)
+
+**Learning Outcomes:**
+- CI/CD best practices
+- Automated testing
+- Deployment strategies
+- Infrastructure as Code
+
+---
+
+### Project 8: Microservices with Containers
+**ความยาก:** ⭐⭐⭐⭐⭐
+
+**Features:**
+- Multiple microservices
+- Service discovery
+- Load balancing
+- Auto-scaling
+- Centralized logging
+
+**Architecture:**
+```
+ALB → ECS/Fargate Services
+        ├── User Service
+        ├── Product Service
+        ├── Order Service
+        └── Payment Service
+              ↓
+         RDS / DynamoDB
+              ↓
+         CloudWatch Logs
+```
+
+**Services Used:**
+- ECS/Fargate
+- Application Load Balancer
+- ECR (Container registry)
+- RDS or DynamoDB
+- CloudWatch
+- X-Ray (Tracing)
+- Service Discovery
+
+**Learning Outcomes:**
+- Container orchestration
+- Microservices patterns
+- Service mesh concepts
+- Distributed tracing
+
+---
+
+## 🎓 Project Implementation Tips
+
+### Getting Started
+1. **Start Small**: Begin with Project 1, gradually increase complexity
+2. **Use Infrastructure as Code**: CloudFormation or SAM templates
+3. **Version Control**: Use Git from day one
+4. **Document**: Write README for each project
+
+### Development Best Practices
+1. **Local Testing**: Use SAM local for Lambda functions
+2. **Environment Variables**: Never hardcode values
+3. **Error Handling**: Implement proper try-catch blocks
+4. **Logging**: Use structured logging with CloudWatch
+
+### Deployment Strategy
+1. **Multiple Environments**: dev, staging, prod
+2. **Automated Testing**: Unit tests, integration tests
+3. **CI/CD**: Automate deployment process
+4. **Monitoring**: Set up alarms and dashboards
+
+### Cost Management
+1. **Stay in Free Tier**: Monitor usage carefully
+2. **Clean Up**: Delete resources after testing
+3. **Use Tags**: Tag all resources for tracking
+4. **Set Alarms**: Billing alarms for cost control
+
+---
+
 ## Additional Resources
 
 ### หนังสือและคอร์สแนะนำ
@@ -1312,7 +1634,200 @@ aws cloudwatch get-metric-statistics \
 4. **Flag และ review** - ทำเครื่องหมายคำถามที่ไม่แน่ใจไว้ review ทีหลัง
 5. **ไม่ต้องเดา** - ไม่มีการหักคะแนน ให้เดาถ้าไม่รู้คำตอบ
 
+### Keywords in Questions และวิธีตอบ
+
+**"Most cost-effective" / "Minimize cost"**
+- มองหา: S3 lifecycle policies, Auto-scaling, Reserved capacity, Serverless
+- ตัวอย่าง: ใช้ S3 Glacier แทน S3 Standard สำหรับ archive data
+- เลี่ยง: ซื้อ instance ขนาดใหญ่, Provisioned capacity เกินความจำเป็น
+
+**"Least operational overhead" / "Minimize management"**
+- มองหา: Managed services, Serverless (Lambda, Fargate, Aurora Serverless)
+- ตัวอย่าง: Lambda แทน EC2, RDS แทน self-managed database
+- เลี่ยง: Self-managed solutions, EC2 instances
+
+**"High availability" / "Fault tolerant"**
+- มองหา: Multi-AZ, Auto Scaling, Load Balancers, Global Tables
+- ตัวอย่าง: RDS Multi-AZ, DynamoDB Global Tables, Multi-AZ deployments
+- เลี่ยง: Single AZ deployments, No redundancy
+
+**"Most secure" / "Enhance security"**
+- มองหา: IAM roles (not keys), Encryption at rest/transit, VPC, Secrets Manager, KMS
+- ตัวอย่าง: IAM roles for Lambda, KMS encryption, VPC endpoints
+- เลี่ยง: Hardcoded credentials, Public access, No encryption
+
+**"Improve performance" / "Reduce latency"**
+- มองหา: Caching (ElastiCache, DAX, CloudFront, API Gateway cache)
+- ตัวอย่าง: CloudFront for static content, ElastiCache for database queries
+- เลี่ยง: Direct database calls, No caching
+
+**"Decouple" / "Loosely coupled"**
+- มองหา: SQS, SNS, EventBridge, Step Functions
+- ตัวอย่าง: SQS between services, SNS for fan-out
+- เลี่ยง: Direct synchronous calls, Tight coupling
+
+**"Real-time" / "Immediate"**
+- มองหา: Kinesis Data Streams, WebSocket API, DynamoDB Streams
+- ตัวอย่าง: Kinesis for streaming data, WebSocket for real-time chat
+- เลี่ยง: Batch processing, Polling
+
+**"Near real-time"**
+- มองหา: SQS, SNS, Kinesis Firehose
+- ตัวอย่าง: SQS with short polling, Kinesis Firehose (60s buffer)
+- เลี่ยง: Daily batch jobs
+
+### Common Question Patterns
+
+**Pattern 1: Choose the Right Database**
+```
+Question: "需要 key-value storage with millisecond latency..."
+Answer: DynamoDB
+
+Question: "需要 SQL และ complex queries..."
+Answer: RDS
+
+Question: "需要 in-memory caching..."
+Answer: ElastiCache
+```
+
+**Pattern 2: Lambda Integration**
+```
+Question: "Lambda needs to access database credentials..."
+Answer: Store in Secrets Manager, retrieve in Lambda
+
+Question: "Lambda timeout after 30 seconds..."
+Answer: Either increase timeout (max 15 min) OR use async processing
+
+Question: "Share code across multiple Lambda functions..."
+Answer: Use Lambda Layers
+```
+
+**Pattern 3: API Gateway Scenarios**
+```
+Question: "API requests taking more than 30 seconds..."
+Answer: Use asynchronous processing (return immediately, process in background)
+
+Question: "Implement request validation..."
+Answer: Use API Gateway request validators with JSON schema
+
+Question: "Reduce API call costs..."
+Answer: Enable caching
+```
+
+**Pattern 4: DynamoDB Design**
+```
+Question: "Query by multiple attributes..."
+Answer: Use GSI (Global Secondary Index)
+
+Question: "All queries need strong consistency..."
+Answer: Use strongly consistent reads (costs 2x)
+
+Question: "Need ACID transactions..."
+Answer: Use DynamoDB Transactions
+```
+
+**Pattern 5: CI/CD Deployment**
+```
+Question: "Zero downtime deployment..."
+Answer: Blue/Green deployment or Rolling deployment
+
+Question: "Automated testing before deployment..."
+Answer: Use CodeBuild with test phase in buildspec.yml
+
+Question: "Quick rollback capability..."
+Answer: Immutable deployment or Blue/Green with quick swap
+```
+
+### สิ่งที่ควรจำก่อนเข้าสอบ
+
+**Service Limits (ต้องจำ):**
+| Service | Limit | Note |
+|---------|-------|------|
+| Lambda timeout | 15 minutes | Hard limit |
+| Lambda memory | 128 MB - 10 GB | More memory = more CPU |
+| API Gateway timeout | 29 seconds | Hard limit |
+| SQS message size | 256 KB | Use S3 for larger |
+| SQS retention | 1 min - 14 days | Default 4 days |
+| DynamoDB item size | 400 KB | Single item |
+| S3 object size | 5 TB | Single object |
+| CloudFormation template | 51,200 bytes (direct) | 460,800 bytes (S3) |
+
+**Default Values (ควรรู้):**
+- Lambda timeout: 3 seconds (default)
+- SQS visibility timeout: 30 seconds (default)
+- SQS message retention: 4 days (default)
+- DynamoDB read consistency: Eventually consistent (default)
+
+**Port Numbers:**
+- HTTP: 80
+- HTTPS: 443
+- MySQL/Aurora: 3306
+- PostgreSQL: 5432
+- Redis: 6379
+
 ### คำถามที่พบบ่อย (Frequently Asked Topics)
+1. ✅ Lambda + API Gateway + DynamoDB architecture (มักออกสอบ!)
+2. ✅ S3 versioning และ lifecycle policies
+3. ✅ IAM roles vs IAM users (เมื่อไหร่ใช้อะไร)
+4. ✅ CloudFormation intrinsic functions (Ref, GetAtt, Sub)
+5. ✅ CI/CD pipeline ด้วย CodePipeline
+6. ✅ DynamoDB partition key design
+7. ✅ API Gateway caching และ throttling
+8. ✅ Lambda environment variables และ layers
+9. ✅ CloudWatch metrics และ alarms
+10. ✅ X-Ray tracing และ debugging
+
+### Last Week Before Exam
+
+**Monday-Wednesday: Review Core Services**
+- Lambda, API Gateway, DynamoDB (3 วัน)
+- ทำ hands-on labs ทบทวน
+- Review service limits
+
+**Thursday: Security & IAM**
+- IAM policies
+- KMS, Secrets Manager
+- Cognito
+
+**Friday: Deployment**
+- CloudFormation
+- CodePipeline
+- SAM
+
+**Saturday: Practice Exams**
+- ทำ practice exam 2-3 ชุด
+- Review คำถามที่ทำผิด
+- ทำ note จุดที่ยังไม่แน่ใจ
+
+**Sunday: Light Review**
+- อ่าน Quick Reference
+- Review service limits
+- พักผ่อนให้เพียงพอ
+
+### วันสอบ
+
+**3 ชั่วโมงก่อนสอบ:**
+- Review Quick Reference Guide อีกรอบ
+- ดู service limits และ common patterns
+- พักผ่อนสมอง ไม่อ่านอะไรใหม่
+
+**ระหว่างสอบ:**
+- อ่านคำถามช้าๆ ครบทุกคำ
+- หาคีย์เวิร์ด (most cost-effective, least overhead, etc.)
+- ตัดตัวเลือกที่ผิดชัดออกก่อน
+- Flag คำถามที่ไม่แน่ใจ ทำต่อไป
+- เหลือเวลา 30 นาที: review คำถามที่ flag ไว้
+- เหลือเวลา 10 นาที: ตรวจคำตอบทั้งหมดอีกรอบ
+
+**Mental Tips:**
+- ใช้เวลา 2 minutes/question (130 min / 65 questions)
+- ไม่ติด คำถามเดียวเกิน 3 นาที
+- เดาได้ เพราะไม่หักคะแนน
+- Eliminate คำตอบที่ผิดชัดเจนออกก่อนเสมอ
+
+---
+
+## สิ่งที่ควรจำ
 - Lambda + API Gateway + DynamoDB architecture
 - S3 versioning และ lifecycle policies
 - IAM roles และ policies
