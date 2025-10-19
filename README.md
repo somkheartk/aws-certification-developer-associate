@@ -20,6 +20,7 @@
 - **[Quick Reference Guide](QUICK_REFERENCE.md)** - Service limits, CLI commands, and decision trees
 - **[Practice Questions](PRACTICE_QUESTIONS.md)** - 25+ practice questions with explanations
 - **[Resources](RESOURCES.md)** - Comprehensive list of courses, books, and study materials
+- **[Hands-on Workshops](WORKSHOPS.md)** - 🆕 Practical labs and step-by-step tutorials
 
 ---
 
@@ -211,6 +212,130 @@ messages = sqs.receive_message(
 - Segments และ Subsegments
 - Annotations และ Metadata
 - Sampling rules
+
+**การใช้งาน X-Ray:**
+```python
+from aws_xray_sdk.core import xray_recorder
+from aws_xray_sdk.core import patch_all
+import boto3
+
+# Patch all AWS SDK calls
+patch_all()
+
+dynamodb = boto3.resource('dynamodb')
+
+@xray_recorder.capture('process_order')
+def process_order(order_id):
+    # Add annotations (indexed, searchable)
+    xray_recorder.put_annotation('orderId', order_id)
+    xray_recorder.put_annotation('orderType', 'premium')
+    
+    # Add metadata (not indexed, more details)
+    xray_recorder.put_metadata('orderDetails', {
+        'items': 5,
+        'total': 99.99
+    })
+    
+    # Your business logic
+    table = dynamodb.Table('Orders')
+    table.put_item(Item={'orderId': order_id})
+    
+    return {'status': 'success'}
+```
+
+**Real-world Example:**
+เมื่อมี request ช้า สามารถใช้ X-Ray ดู:
+- ส่วนไหนของ application ใช้เวลานาน
+- การเรียก AWS services ใด ช้า
+- Database queries ที่ต้องการ optimization
+
+---
+
+## 🏗️ Architecture Patterns
+
+### Pattern 1: Serverless Web Application
+**Use Case:** Web application ที่รองรับ traffic ไม่แน่นอน
+
+```
+CloudFront (CDN)
+    ↓
+S3 (Static Content: HTML/CSS/JS)
+    ↓
+API Gateway
+    ↓
+Lambda Functions
+    ↓
+DynamoDB / RDS
+
+Benefits:
+✅ Auto-scaling
+✅ Pay per use
+✅ No server management
+✅ High availability
+```
+
+### Pattern 2: Event-Driven Architecture
+**Use Case:** ประมวลผลไฟล์ที่ upload เข้ามา
+
+```
+S3 Bucket
+    ↓ (S3 Event Notification)
+Lambda Function 1 (Validation)
+    ↓
+SQS Queue
+    ↓
+Lambda Function 2 (Processing)
+    ↓
+DynamoDB (Store Results)
+    ↓
+SNS (Notify Users)
+
+Benefits:
+✅ Asynchronous processing
+✅ Decoupled components
+✅ Error handling with DLQ
+✅ Scalable
+```
+
+### Pattern 3: Microservices with Containers
+**Use Case:** แอพพลิเคชั่นที่มีหลาย services
+
+```
+Application Load Balancer
+    ↓
+ECS/Fargate Services
+    ├── User Service
+    ├── Product Service
+    ├── Order Service
+    └── Payment Service
+    ↓
+RDS / DynamoDB
+
+Benefits:
+✅ Service isolation
+✅ Independent deployment
+✅ Technology flexibility
+✅ Easy scaling
+```
+
+### Pattern 4: Fan-out Pattern
+**Use Case:** ส่งข้อความไปหลาย destinations
+
+```
+API Gateway
+    ↓
+Lambda (Publisher)
+    ↓
+SNS Topic
+    ├── SQS Queue 1 → Lambda (Email Service)
+    ├── SQS Queue 2 → Lambda (SMS Service)
+    └── SQS Queue 3 → Lambda (Push Notification)
+
+Benefits:
+✅ Parallel processing
+✅ Independent failure
+✅ Easy to add new subscribers
+```
 
 ---
 
