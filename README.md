@@ -2,6 +2,9 @@
 
 คู่มือเตรียมสอบ AWS Certified Developer - Associate อย่างครบถ้วน
 
+## 🚀 Quick Start
+**New to this certification?** Start with the [Getting Started Guide](GETTING_STARTED.md) for a step-by-step approach!
+
 ## 📋 Table of Contents
 - [ภาพรวมการสอบ (Exam Overview)](#exam-overview)
 - [โดเมนการสอบ (Exam Domains)](#exam-domains)
