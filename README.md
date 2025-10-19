@@ -12,6 +12,12 @@
 - [แหล่งข้อมูลเพิ่มเติม (Additional Resources)](#additional-resources)
 - [เคล็ดลับการสอบ (Exam Tips)](#exam-tips)
 
+## 📚 Additional Study Materials
+- **[Study Checklist](STUDY_CHECKLIST.md)** - Track your learning progress
+- **[Quick Reference Guide](QUICK_REFERENCE.md)** - Service limits, CLI commands, and decision trees
+- **[Practice Questions](PRACTICE_QUESTIONS.md)** - 25+ practice questions with explanations
+- **[Resources](RESOURCES.md)** - Comprehensive list of courses, books, and study materials
+
 ---
 
 ## Exam Overview
