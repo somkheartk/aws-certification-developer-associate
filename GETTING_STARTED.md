@@ -39,7 +39,14 @@ If you're new to this certification, follow this recommended path:
 - Decision trees
 - Comparison tables
 
-### Step 6: Practice with Questions
+### Step 6: Complete Hands-on Workshops
+🔨 Practice with [WORKSHOPS.md](WORKSHOPS.md):
+- 5 comprehensive hands-on labs
+- Real-world scenarios
+- Step-by-step instructions
+- Sample projects to build
+
+### Step 7: Practice with Questions
 🎯 Test yourself with [PRACTICE_QUESTIONS.md](PRACTICE_QUESTIONS.md):
 - 25+ practice questions
 - Covers all exam domains
@@ -54,6 +61,7 @@ If you're new to this certification, follow this recommended path:
 | [QUICK_REFERENCE.md](QUICK_REFERENCE.md) | Quick lookup for limits, commands, patterns | Review phase and exam day |
 | [PRACTICE_QUESTIONS.md](PRACTICE_QUESTIONS.md) | Test your knowledge | After studying each domain |
 | [RESOURCES.md](RESOURCES.md) | Links to courses, books, labs | Finding external resources |
+| [WORKSHOPS.md](WORKSHOPS.md) | 🆕 Hands-on labs and practical exercises | Practice phase - build real projects |
 
 ## 🗓️ Suggested Study Timeline
 
